@@ -1,42 +1,30 @@
 pipeline {
   agent any
-  tools { 
-      maven 'Maven 3.9.0'
-      jdk 'Jdk'
-    }
+  
   stages {
     stage('Build') {
-    steps {
-      dir('/var/jenkins_home/workspace/PES2UG20CS009'){
-      sh 'mvn clean package'
-      echo 'Build stage successful '
+      steps {
+        sh 'g++ -o YOUR_SRN-1 YOUR_SRN-1.cpp'
+        echo 'Build stage successful'
       }
-  }
-}
-stage('Test') {
-  steps {
-      dir('/var/jenkins_home/workspace/PES2UG20CS009'){
-      sh 'mvn test'
-      echo 'Test Stage Successful'
-      post {
-        always {
-          junit 'target/surefire-reports/* .xml '
-        }
+    }
+    stage('Test') {
+      steps {
+        sh './YOUR_SRN-1'
+        echo 'Test stage successful'
+      }
+    }
+    stage('Deploy') {
+      steps {
+        sh 'echo "Deploying..."'
+        echo 'Deployment successful'
       }
     }
   }
-}
-stage( 'Deploy') {
-  steps {
-    sh 'mvn deploy'
-    echo 'Deployment Successful '
-    }
-  }
-}
   
-post {
-  failure {
-    echo 'pipeline failed'
+  post {
+    failure {
+      echo 'pipeline failed'
     }
   }
 }
