@@ -11,6 +11,9 @@ pipeline {
   }
 }
 stage('Test') {
+  tools { 
+      maven 'Maven 3.9.0'
+    }
   steps {
       sh 'mvn test'
       echo 'Test Stage Successful'
@@ -22,6 +25,9 @@ stage('Test') {
   }
 }
 stage( 'Deploy') {
+  tools { 
+      maven 'Maven 3.9.0'
+    }
   steps {
     sh 'mvn deploy'
     echo 'Deployment Successful '
