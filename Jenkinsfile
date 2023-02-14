@@ -8,7 +8,7 @@ pipeline {
     stage('Build') {
     steps {
       dir('/var/jenkins_home/workspace/PES2UG20CS009'){
-      sh 'mvn clean install'
+      sh 'mvn clean package'
       echo 'Build stage successful '
       }
   }
