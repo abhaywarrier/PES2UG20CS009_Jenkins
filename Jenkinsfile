@@ -4,7 +4,7 @@ pipeline {
       maven 'Maven 3.9.0'
     }
   stages {
-    stage('Bui1d') {
+    stage('Build') {
     steps {
       dir('/var/jenkins_home/workspace/PES2UG20CS009'){
       sh 'mvn clean install'
