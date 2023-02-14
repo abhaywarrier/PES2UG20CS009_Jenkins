@@ -1,8 +1,8 @@
-tools{
-  maven 'Maven 3.3.9'
-}
 pipeline {
   agent any
+  tools{
+  maven 'Maven 3.3.9'
+  }
   stages {
     stage('Bui1d') {
     steps {
