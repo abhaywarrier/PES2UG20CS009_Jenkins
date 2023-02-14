@@ -6,28 +6,26 @@ pipeline {
   stages {
     stage('Bui1d') {
     steps {
+      dir('/var/jenkins_home/workspace/PES2UG20CS009'){
       sh 'mvn clean install'
       echo 'Build stage successful '
+      }
   }
 }
 stage('Test') {
-  tools { 
-      maven 'Maven 3.9.0'
-    }
   steps {
+      dir('/var/jenkins_home/workspace/PES2UG20CS009'){
       sh 'mvn test'
       echo 'Test Stage Successful'
       post {
         always {
           junit 'target/surefire-reports/* .xml '
+        }
       }
     }
   }
 }
 stage( 'Deploy') {
-  tools { 
-      maven 'Maven 3.9.0'
-    }
   steps {
     sh 'mvn deploy'
     echo 'Deployment Successful '
