@@ -1,8 +1,9 @@
 pipeline {
   agent any
-//   tools{
-//   maven 'MAVEN_HOME'
-//   }
+  tools { 
+      maven 'MAVEN_HOME' 
+      jdk 'JAVA_HOME' 
+    }
   stages {
     stage('Bui1d') {
     steps {
